@@ -3,9 +3,16 @@ import VerificationCodeInput from '../VerificationCodeInput.vue';
 </script>
 
 <template>
-  <VerificationCodeInput />
+  <div class="container">
+    <VerificationCodeInput />
+  </div>
 </template>
 
 <style scoped>
-/* 可以根據需要添加樣式 */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 </style>
