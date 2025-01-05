@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import VerificationCodeInput from '../VerificationCodeInput.vue';
+
+onMounted(() => {
+  const firstInput = document.querySelector('.verification-code-input input') as HTMLInputElement;
+  if (firstInput) {
+    firstInput.focus();
+  }
+});
 </script>
 
 <template>
