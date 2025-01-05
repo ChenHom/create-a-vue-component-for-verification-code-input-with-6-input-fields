@@ -113,10 +113,29 @@ const onFocus = (event: FocusEvent) => {
   gap: 8px;
 }
 
+.verification-code-input .input-content {
+  width: 512px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .verification-code-input input {
-  width: 40px;
-  height: 40px;
+  color: inherit;
+  font-family: inherit;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #919191;
+  height: 60px;
+  width: 60px;
+  font-size: 44px;
   text-align: center;
-  font-size: 24px;
+}
+
+.verification-code-input input::-webkit-outer-spin-button,
+.verification-code-input input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
 }
 </style>
