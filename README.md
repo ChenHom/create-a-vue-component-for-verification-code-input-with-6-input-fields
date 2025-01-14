@@ -53,7 +53,3 @@ import VerificationCodeInput from './VerificationCodeInput.vue';
   <VerificationCodeInput />
 </template>
 ```
-
-## 貢獻
-
-歡迎提交問題和 PR 來改進此專案。
