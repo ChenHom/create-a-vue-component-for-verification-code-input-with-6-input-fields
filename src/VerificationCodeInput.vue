@@ -18,9 +18,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
-const digits = ref(Array(6).fill(''));
+const props = defineProps<{
+  length: number;
+}>();
+
+const digits = ref(Array(props.length).fill(''));
+
+watch(() => props.length, (newLength) => {
+  digits.value = Array(newLength).fill('');
+});
 
 /**
  * 處理輸入事件
@@ -31,7 +39,7 @@ const onInput = (event: Event, index: number) => {
   const input = event.target as HTMLInputElement;
   const value = input.value.replace(/\D/g, '');
   digits.value[index] = value;
-  if (value && index < 5) {
+  if (value && index < props.length - 1) {
     ((event.target as HTMLInputElement).nextElementSibling as HTMLInputElement)?.focus();
   }
   input.setSelectionRange(1, 1);
@@ -67,7 +75,7 @@ const onArrowLeft = (event: KeyboardEvent, index: number) => {
  * @param {number} index - 當前輸入框的索引
  */
 const onArrowRight = (event: KeyboardEvent, index: number) => {
-  if (index < 5) {
+  if (index < props.length - 1) {
     ((event.target as HTMLInputElement).nextElementSibling as HTMLInputElement)?.focus();
   }
 };
@@ -79,7 +87,7 @@ const onArrowRight = (event: KeyboardEvent, index: number) => {
  */
 const onPaste = (event: ClipboardEvent, index: number) => {
   const paste = event.clipboardData?.getData('text').replace(/\D/g, '') || '';
-  for (let i = 0; i < paste.length && index + i < 6; i++) {
+  for (let i = 0; i < paste.length && index + i < props.length; i++) {
     digits.value[index + i] = paste[i];
   }
   event.preventDefault();

@@ -12,7 +12,7 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <VerificationCodeInput />
+    <VerificationCodeInput :length="6" />
   </div>
 </template>
 
